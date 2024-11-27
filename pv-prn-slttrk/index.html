@@ -70,43 +70,5 @@
     <div class="image-container">
         <img src="references.jpg" alt="Referências">
     </div>
-
-	<script>
-	// Função para capturar os parâmetros da URL
-	function getUTMParameters() {
-	    const urlParams = new URLSearchParams(window.location.search);
-	    return urlParams.toString(); // Retorna os parâmetros como string
-	}
-	
-	// Função para adicionar os parâmetros ao link
-	function appendUTMToLinks() {
-	    // Captura os parâmetros UTM da URL atual
-	    const utmParams = getUTMParameters();
-	
-	    // Se existirem parâmetros UTM
-	    if (utmParams) {
-	        // Adiciona um evento de clique a todos os botões
-	        document.body.addEventListener('click', function (event) {
-	            // Verifica se o elemento clicado é um botão ou tem comportamento de botão
-	            if (event.target.tagName === 'BUTTON' || event.target.tagName === 'A' || event.target.closest('button') || event.target.closest('a')) {
-	                // Identifica o botão/link clicado
-	                const target = event.target.closest('button') || event.target.closest('a');
-	
-	                // Verifica se o botão tem um link associado (href)
-	                if (target && target.tagName === 'A' && target.href) {
-	                    // Adiciona os parâmetros UTM ao link
-	                    const url = new URL(target.href);
-	                    url.search += (url.search ? '&' : '?') + utmParams;
-	                    target.href = url.toString();
-	                }
-	            }
-	        });
-	    }
-	}
-	
-	// Executa a função ao carregar a página
-	document.addEventListener('DOMContentLoaded', appendUTMToLinks);
-	</script>
-
 </body>
 </html>
